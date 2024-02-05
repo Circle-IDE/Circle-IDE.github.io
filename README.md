@@ -1,4 +1,4 @@
-scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modified for use in [PenguinMod](https://penguinmod.github.io/penguinmod.github.io/) then modified for use in [Snail IDE](https://github.com/Snail-IDE/snail-ide.github.io) 😀
+scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modified for use in [PenguinMod](https://penguinmod.github.io/penguinmod.github.io/) then modified for use in [Snail IDE](https://github.com/Snail-IDE/snail-ide.github.io) Then again for [Circle IDE!](https://circle-ide.github.io/circle-ide.github.io/)😀
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/snail-ide/snail-ide.github.io/)
 
 Snail IDE: src/lib/default-project/penguin.svg is based on [Twemoji](https://twemoji.twitter.com/) and is licensed under CC BY 4.0 https://creativecommons.org/licenses/by/4.0/   
