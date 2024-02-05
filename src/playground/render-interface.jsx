@@ -116,8 +116,8 @@ const Footer = () => (
             <div className={styles.footerText}>
                 <FormattedMessage
                     // eslint-disable-next-line max-len
-                    defaultMessage="PenguinMod, Snail IDE, and TurboWarp are not affiliated with Scratch, the Scratch Team, or the Scratch Foundation."
-                    description="Disclaimer that PenguinMod, Snail IDE, and TurboWarp are not connected to Scratch"
+                    defaultMessage="PenguinMod, Snail IDE, Circle IDE, and TurboWarp are not affiliated with Scratch, the Scratch Team, or the Scratch Foundation."
+                    description="Disclaimer that PenguinMod, Snail IDE, Circle IDE, and TurboWarp are not connected to Scratch"
                     id="tw.footer.disclaimer"
                 />
             </div>
@@ -244,9 +244,9 @@ class Interface extends React.Component {
     }
     handleUpdateProjectTitle(title, isDefault) {
         if (isDefault || !title) {
-            document.title = `Snail IDE - ${this.props.intl.formatMessage(messages.defaultTitle)}`;
+            document.title = `Circle IDE - ${this.props.intl.formatMessage(messages.defaultTitle)}`;
         } else {
-            document.title = `${title} - Snail IDE`;
+            document.title = `${title} - Circle IDE`;
         }
     }
     render() {
@@ -303,7 +303,7 @@ class Interface extends React.Component {
                     {isHomepage ? (
                         <React.Fragment>
                             <div className={styles.remixWarningBox}>
-                                    <p>If you would like your extension removed/added to Snail IDE, please contact us in some way.</p>
+                                    <p>If you would like your extension removed/added to Circle IDE, please contact us in some way.</p>
                             </div>
                             {/* project not approved message */}
                             {(window.LastFetchedProject) != null && (window.LastFetchedProject.accepted == false) ? (
@@ -375,7 +375,7 @@ class Interface extends React.Component {
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
-                                        defaultMessage="Snail IDE is a mod of Penguinmod to add new blocks and features either in extensions or in Snail IDE's main toolbox. PenguinMod is a Scratch mod that compiles projects to JavaScript to make them run really fast. Try it out by choosing an uploaded project below or making your own in the editor."
+                                        defaultMessage="Circle IDE is a mod of Snail IDE to add new blocks and features either in extensions or in Circle IDE's main toolbox. Snail IDE is a mod of PenguinMod to expand on the toolset even more."
                                         description="Description of PenguinMod and TurboWarp"
                                         id="tw.home.description"
                                     />
