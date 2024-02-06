@@ -302,6 +302,7 @@ class Interface extends React.Component {
                             </div>
                             <div className={styles.remixWarningBox}>
                                     <p>New extensions coming soon!</p>
+                             </div>
                             </div>
                             {/* project not approved message */}
                             {(window.LastFetchedProject) != null && (window.LastFetchedProject.accepted == false) ? (
