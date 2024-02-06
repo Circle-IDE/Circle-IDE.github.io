@@ -71,7 +71,7 @@ const handleClickAddonSettings = () => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'A mod of PenguinMod',
+        defaultMessage: 'A mod of Snail IDE',
         description: 'Title of homepage',
         id: 'tw.guiDefaultTitle'
     }
@@ -184,7 +184,7 @@ const Footer = () => (
                             id="tw.feedback"
                         />
                     </a>
-                    <a href="https://github.com/Snail-IDE/">
+                    <a href="https://github.com/Circle-IDE/Circle-IDE.github.io">
                         <FormattedMessage
                             defaultMessage="Source Code"
                             description="Link to source code"
