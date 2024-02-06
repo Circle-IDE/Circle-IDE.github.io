@@ -116,7 +116,7 @@ const Footer = () => (
             <div className={styles.footerText}>
                 <FormattedMessage
                     // eslint-disable-next-line max-len
-                    defaultMessage="PenguinMod, Snail IDE, Circle IDE, and TurboWarp are not affiliated with Scratch, the Scratch Team, or the Scratch Foundation."
+                    defaultMessage="PenguinMod, Snail IDE, Circle IDE, and TurboWarp are not affiliated with Scratch, the Scratch Team, or the Scratch Foundation. This is just a awesome mod i made. 🙂"
                     description="Disclaimer that PenguinMod, Snail IDE, Circle IDE, and TurboWarp are not connected to Scratch"
                     id="tw.footer.disclaimer"
                 />
@@ -212,18 +212,13 @@ const Footer = () => (
                             id="tw.livetests"
                         />
                     </a>
-                    <a href="https://scratch.mit.edu/studios/33532977/">
+                    <a href="Circle-IDE.github.io/Studio-Not-hereyet.html">
                         <FormattedMessage
-                            defaultMessage="Scratch Studio"
+                            defaultMessage="Scratch Studio (Will replace with circle ide studio later)"
                             description="Link to scratch studio"
                             id="tw.snail-studio"
                         />
                     </a>
-                    <a href="https://snail-ide.vercel.app">
-                        <FormattedMessage
-                            defaultMessage="Homepage"
-                            description="Link to homepage"
-                            id="tw.beta"
                         />
                     </a>
                 </div>
@@ -244,9 +239,9 @@ class Interface extends React.Component {
     }
     handleUpdateProjectTitle(title, isDefault) {
         if (isDefault || !title) {
-            document.title = `Circle IDE - ${this.props.intl.formatMessage(messages.defaultTitle)}`;
+            document.title = `Circle IDE | ${this.props.intl.formatMessage(messages.defaultTitle)}`;
         } else {
-            document.title = `${title} - Circle IDE`;
+            document.title = `${title} | Circle IDE`;
         }
     }
     render() {
@@ -303,7 +298,10 @@ class Interface extends React.Component {
                     {isHomepage ? (
                         <React.Fragment>
                             <div className={styles.remixWarningBox}>
-                                    <p>If you would like your extension removed/added to Circle IDE, please contact us in some way.</p>
+                                    <p>If you would like your extension removed/added to Circle IDE, please contact us in some way. Common way is @-sodium_test- on scratch.</p>
+                            </div>
+                            <div className={styles.remixWarningBox}>
+                                    <p>New extensions coming soon!</p>
                             </div>
                             {/* project not approved message */}
                             {(window.LastFetchedProject) != null && (window.LastFetchedProject.accepted == false) ? (
