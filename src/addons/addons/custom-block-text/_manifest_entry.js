@@ -36,7 +36,7 @@ const manifest = {
       "name": "Bold text",
       "id": "bold",
       "type": "boolean",
-      "default": false
+      "default": true
     },
     {
       "dynamic": true,

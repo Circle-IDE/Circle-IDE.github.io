@@ -29,7 +29,7 @@ const manifest = {
       "type": "integer",
       "min": 0,
       "max": 100,
-      "default": 100
+      "default": 78
     }
   ],
   "dynamicDisable": true,
