@@ -221,6 +221,7 @@ const Footer = () => (
                     </a>
                         />
                     </a>
+                  </div>
                 </div>
             </div>
         </div>
