@@ -119,7 +119,7 @@
                     return await playWithAudioElement(url, target);
                 }
             } catch (e) {
-                console.warn(`All attempts to play ${url} failed`, e);
+                console.warn(`All attempts to play ${url} cannot`, e);
             }
         };
 
@@ -131,6 +131,7 @@
                 "blockIconURI": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAIAAAC1eHXNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADwSURBVFhH7dJtDsMgCIDhnWXn6WV7Qkc1MS1+AALGNZr3z5TUJ2s/3/NYoe14VneEENCOd01HudBMJ9Fwivt/RAn36fzJnOy9RAx9B2cGJf4+FnKQ15ADZWIHVJ5etLjyz3zEzMaRuiCNhSbLLB05zsWo7Xjm4hjo3xywkxc6MqnpKBeasY1woH2/eu9lJoX4PqZR6O90IccECu1IP70pLEfacaVwHZArpeLo3Nc5UlZ3oJ17ThSxA1rIYU4ZcUDmlEEHtJDDkIIdoqeLhvtVHGinnxVF64BMKAYOaCGHkmLjgF7q0KShvNGhaTvunccP41vRe+EnFwgAAAAASUVORK5CYII=",
                 "id": "rplus",
                 "name": "Rounding+",
+                "docsURI": "https://docs.google.com/document/d/1lE4RCJhVWZYz7fRUnZN7e1YPTgBa7PbPYo3iklIiyJo/edit?usp=sharing",
                 "color1": "#24d600",
                 "color2": "#00b815",
                 "tbShow": true,
@@ -180,10 +181,10 @@
     });
     Extension.prototype[`dnrtawrttnr`] = async (args, util) => {
         if (Boolean(((args["RNUMB"] * Math.round((args["NUMB"] / args["RNUMB"]))) == args["ANS"]))) {
-            return 'true'
+            return args["true"]
 
         } else {
-            return 'false'
+            return args["false"]
 
         };
     };

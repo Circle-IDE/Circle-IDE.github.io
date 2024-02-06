@@ -9,6 +9,7 @@ import classNames from 'classnames';
 
 import bluetoothIconURL from './bluetooth.svg';
 import internetConnectionIconURL from './internet-connection.svg';
+import snailIconUrl from './snail.svg';
 
 /* eslint-disable react/prefer-stateless-function */
 class LibraryItemComponent extends React.PureComponent {
@@ -88,6 +89,7 @@ class LibraryItemComponent extends React.PureComponent {
                         this.props.internetConnectionRequired ||
                         this.props.collaborator ||
                         this.props.ruby ||
+                        this.props.snailExt ||
                         this.props.extDeveloper ||
                         this.props.twDeveloper ||
                         this.props.eventSubmittor ||
@@ -95,7 +97,7 @@ class LibraryItemComponent extends React.PureComponent {
                         ? (
                             <div className={styles.featuredExtensionMetadata}>
                                 <div className={styles.featuredExtensionRequirement}>
-                                    {this.props.bluetoothRequired || this.props.internetConnectionRequired ? (
+                                    {this.props.bluetoothRequired || this.props.internetConnectionRequired || this.props.snailExt ? (
                                         <div>
                                             <div>
                                                 <FormattedMessage
@@ -112,6 +114,9 @@ class LibraryItemComponent extends React.PureComponent {
                                                 ) : null}
                                                 {this.props.internetConnectionRequired ? (
                                                     <img src={internetConnectionIconURL} />
+                                                ) : null}
+                                                {this.props.snailExt ? (
+                                                    <img src={snailIconUrl} />
                                                 ) : null}
                                             </div>
                                         </div>
@@ -254,6 +259,7 @@ class LibraryItemComponent extends React.PureComponent {
 
 LibraryItemComponent.propTypes = {
     bluetoothRequired: PropTypes.bool,
+    snailExt: PropTypes.bool,
     collaborator: PropTypes.string,
     ruby: PropTypes.string,
     credits: PropTypes.string,

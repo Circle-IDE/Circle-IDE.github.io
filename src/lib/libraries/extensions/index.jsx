@@ -220,6 +220,7 @@ const menuItems = [
         name: 'SnailShare API',
         extensionId: 'https://snail-ide.js.org/api.js',
         iconURL: 'https://snail-ide.js.org/snailideapiext.png',
+        snailExt: true,
         collaborator: 'BA4X',
         tags: ['penguinmod'],
         description: 'Fetch details of projects and users from Snailshare.',
@@ -367,6 +368,7 @@ const menuItems = [
     {
         name: 'Random Utils',
         extensionId: 'https://editor.snail-ide.com/random_utils.js',
+        snailExt: true,
         iconURL: 'https://editor.snail-ide.com/random.png',
         tags: ['penguinmod'],
         description: "Random utilites that you may or may not use.",
@@ -1080,6 +1082,7 @@ const menuItems = [
     {
         name: 'Discord Auth',
         extensionId: 'https://snail-ide.js.org/discord.js',
+        snailExt: true,
         iconURL: 'https://snail-ide.js.org/discord-png.png',
         tags: ['penguinmod'],
         description: "Get data from a Discord user!",
@@ -1253,6 +1256,7 @@ const menuItems = [
     },
     {
         name: 'ISS',
+        snailExt: true,
         extensionId: 'https://snail-ide.js.org/iss.js',
         iconURL: 'https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2003/05/artist_s_impression_of_the_completed_international_space_station/9874982-3-eng-GB/Artist_s_impression_of_the_completed_International_Space_Station_pillars.jpg',
         tags: ['penguinmod'],
