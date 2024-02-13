@@ -1,65 +1,224 @@
-import React from 'react';
+import {defineMessages, FormattedMessage, intlShape, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
-import bindAll from 'lodash.bindall';
-import {FormattedMessage} from 'react-intl';
-import styles from './file-input.css';
+import React from 'react';
+import Box from '../box/box.jsx';
+import Modal from '../../containers/modal.jsx';
+import FileInput from './file-input.jsx';
+import styles from './custom-extension-modal.css';
+import FancyCheckbox from '../tw-fancy-checkbox/checkbox.jsx';
+import {APP_NAME} from '../../lib/brand';
 
-class FileInput extends React.Component {
-    constructor (props) {
-        super(props);
-        bindAll(this, [
-            'handleChange',
-            'handleClick'
-        ]);
-        this.state = {
-            file: props.file
-        };
+const messages = defineMessages({
+    title: {
+        defaultMessage: 'Load Custom Extension',
+        description: 'Title of custom extension menu',
+        id: 'tw.customExtensionModal.title'
     }
-    handleChange (e) {
-        const file = e.target.files[0];
-        this.props.onChange(file);
-    }
-    handleClick () {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = this.props.accept;
-        input.addEventListener('change', this.handleChange);
-        document.body.appendChild(input);
-        input.click();
-        input.remove();
-    }
-    render () {
-        return (
-            <button
-                className={styles.container}
-                onClick={this.handleClick}
-            >
-                {this.props.file ? (
+});
+
+const CustomExtensionModal = props => (
+    <Modal
+        className={styles.modalContent}
+        onRequestClose={props.onClose}
+        contentLabel={props.intl.formatMessage(messages.title)}
+        id="customExtensionModal"
+    >
+        <Box
+            className={styles.body}
+            onDragOver={props.onDragOver}
+            onDragLeave={props.onDragLeave}
+            onDrop={props.onDrop}
+        >
+            <div className={styles.typeSelectorContainer}>
+                <div
+                    className={styles.typeSelectorButton}
+                    data-active={props.type === 'url'}
+                    onClick={props.onSwitchToURL}
+                    tabIndex={0}
+                >
                     <FormattedMessage
-                        defaultMessage="Selected: {name}"
+                        defaultMessage="URL"
                         // eslint-disable-next-line max-len
-                        description="Appears in a file selector when a file is selected. {name} could be a string like 'fetch.js'"
-                        id="tw.fileInput.selected"
-                        values={{
-                            name: this.props.file.name
-                        }}
+                        description="Button to choose to load an extension from a remote URL. Not much space, so keep this short."
+                        id="tw.customExtensionModal.url"
                     />
-                ) : (
+                </div>
+                <div
+                    className={styles.typeSelectorButton}
+                    data-active={props.type === 'file'}
+                    onClick={props.onSwitchToFile}
+                    tabIndex={0}
+                >
                     <FormattedMessage
-                        defaultMessage="No file selected."
-                        description="Appears in a file selector when no file is selected."
-                        id="tw.fileInput.none"
+                        defaultMessage="File"
+                        // eslint-disable-next-line max-len
+                        description="Button to choose to load an extension from a local file. Not much space, so keep this short."
+                        id="tw.customExtensionModal.file"
                     />
-                )}
-            </button>
-        );
-    }
-}
+                </div>
+                <div
+                    className={styles.typeSelectorButton}
+                    data-active={props.type === 'text'}
+                    onClick={props.onSwitchToText}
+                    tabIndex={0}
+                >
+                    <FormattedMessage
+                        defaultMessage="Text"
+                        // eslint-disable-next-line max-len
+                        description="Button to choose to load an extension from a text input. Not much space, so keep this short."
+                        id="tw.customExtensionModal.text"
+                    />
+                </div>
+            </div>
 
-FileInput.propTypes = {
+            {props.type === 'url' ? (
+                <React.Fragment key={props.type}>
+                    <p>
+                        <FormattedMessage
+                            defaultMessage="Enter the extension's URL:"
+                            description="Label that appears when loading a custom extension from a URL"
+                            id="tw.customExtensionModal.promptURL"
+                        />
+                    </p>
+                    <input
+                        type="text"
+                        className={styles.urlInput}
+                        value={props.url}
+                        onChange={props.onChangeURL}
+                        onKeyDown={props.onKeyDown}
+                        placeholder="https://extensions.turbowarp.org/..."
+                        autoFocus
+                    />
+                </React.Fragment>
+            ) : props.type === 'file' ? (
+                <React.Fragment key={props.type}>
+                    <p>
+                        <FormattedMessage
+                            defaultMessage="Select the extension's JavaScript file:"
+                            description="Label that appears when loading a custom extension from a file"
+                            id="tw.customExtensionModal.promptFile"
+                        />
+                    </p>
+                    <FileInput
+                        accept=".js"
+                        onChange={props.onChangeFile}
+                        file={props.file}
+                    />
+                </React.Fragment>
+            ) : (
+                <React.Fragment key={props.type}>
+                    <p>
+                        <FormattedMessage
+                            defaultMessage="Paste the extension's JavaScript source code:"
+                            description="Label that appears when loading a custom extension from a text input"
+                            id="tw.customExtensionModal.promptText"
+                        />
+                    </p>
+                    <textarea
+                        className={styles.textCodeInput}
+                        placeholder={'class Extension {\n  // ...\n}\nScratch.extensions.register(new Extension());'}
+                        value={props.text}
+                        onChange={props.onChangeText}
+                        autoFocus
+                        spellCheck={false}
+                    />
+                </React.Fragment>
+            )}
+
+            {props.onChangeUnsandboxed ? (
+                <React.Fragment>
+                    <label className={styles.unsandboxedContainer}>
+                        <FancyCheckbox
+                            className={styles.unsandboxedCheckbox}
+                            checked={props.unsandboxed}
+                            onChange={props.onChangeUnsandboxed}
+                        />
+                        <FormattedMessage
+                            defaultMessage="Run extension without sandbox"
+                            description="Message that appears in custom extension prompt"
+                            id="tw.customExtensionModal.unsandboxed"
+                        />
+                    </label>
+                    {props.unsandboxed && (
+                        <p className={styles.unsandboxedWarning}>
+                            <FormattedMessage
+                                // eslint-disable-next-line max-len
+                                defaultMessage="Loading extensions without the sandbox is dangerous and should not be enabled if you don't know what you're doing."
+                                description="Warning that appears when disabling extension security sandbox"
+                                id="tw.customExtensionModal.unsandboxedWarning1"
+                            />
+                            <FormattedMessage
+                                // eslint-disable-next-line max-len
+                                defaultMessage="Unsandboxed extensions can corrupt your project, delete your settings, phish for passwords, and other bad things. The {APP_NAME} developers are not responsible for any resulting issues."
+                                description="Warning that appears when disabling extension security sandbox"
+                                id="tw.customExtensionModal.unsandboxedWarning2"
+                                values={{
+                                    APP_NAME
+                                }}
+                            />
+                        </p>
+                    )}
+                </React.Fragment>
+            ) : (
+                props.unsandboxed ? (
+                    <p className={styles.trustedExtension}>
+                        <FormattedMessage
+                            // eslint-disable-next-line max-len
+                            defaultMessage="This extension will be loaded without the sandbox because it is from a trusted source."
+                            description="Message that appears in custom extension prompt"
+                            id="tw.customExtensionModal.trusted"
+                        />
+                    </p>
+                ) : (
+                    <p>
+                        <FormattedMessage
+                            // eslint-disable-next-line max-len
+                            defaultMessage="Extensions from untrusted URLs will always be loaded with the sandbox for security."
+                            description="Message that appears in custom extension prompt"
+                            id="tw.customExtensionModal.untrusted"
+                        />
+                    </p>
+                )
+            )}
+
+            <div className={styles.buttonRow}>
+                <button
+                    className={styles.loadButton}
+                    onClick={props.onLoadExtension}
+                    disabled={!props.canLoadExtension}
+                >
+                    <FormattedMessage
+                        defaultMessage="Load"
+                        description="Button that loads the given custom extension"
+                        id="tw.customExtensionModal.load"
+                    />
+                </button>
+            </div>
+        </Box>
+    </Modal>
+);
+
+CustomExtensionModal.propTypes = {
+    intl: intlShape,
+    canLoadExtension: PropTypes.bool.isRequired,
+    type: PropTypes.oneOf(['url', 'file', 'text']).isRequired,
+    onSwitchToFile: PropTypes.func.isRequired,
+    onSwitchToURL: PropTypes.func.isRequired,
+    onSwitchToText: PropTypes.func.isRequired,
     file: PropTypes.instanceOf(File),
-    accept: PropTypes.string,
-    onChange: PropTypes.func
+    onChangeFile: PropTypes.func.isRequired,
+    onDragOver: PropTypes.func.isRequired,
+    onDragLeave: PropTypes.func.isRequired,
+    onDrop: PropTypes.func.isRequired,
+    url: PropTypes.string.isRequired,
+    onChangeURL: PropTypes.func.isRequired,
+    onKeyDown: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
+    onChangeText: PropTypes.func.isRequired,
+    unsandboxed: PropTypes.bool.isRequired,
+    onChangeUnsandboxed: PropTypes.func,
+    onLoadExtension: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
 };
 
-export default FileInput;
+export default injectIntl(CustomExtensionModal);

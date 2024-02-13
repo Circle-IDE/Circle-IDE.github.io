@@ -300,11 +300,11 @@ StudioView.prototype.onselect = function (id, el) { };
 StudioView.prototype.onpageload = function () { };
 StudioView.prototype.onend = function () { };
 
-StudioView.STUDIO_API = 'https://snailshare-backend.glitch.me/api';
+StudioView.STUDIO_API = 'https://snailshare.xyz/api';
 
 // The URL to download thumbnails from.
 // $id is replaced with the project's ID.
-StudioView.THUMBNAIL_SRC = 'https://snailshare-backend.glitch.me/api/pmWrapper/iconUrl?id=$id';
+StudioView.THUMBNAIL_SRC = 'https://snailshare.xyz/api/pmWrapper/iconUrl?id=$id';
 
 // The URL for project pages.
 // $id is replaced with the project ID.

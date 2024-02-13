@@ -4,6 +4,7 @@ import {FormattedMessage} from 'react-intl';
 
 import NoahgptThumb from './noahgpt/costume1.svg';
 import musicIconURL from './music/music.png';
+import roku from './roku/roku.png';
 import cloudstorageIconURL from './cloudstorage/costume1.svg';
 import pythonIcon from './python/py.svg';
 import extCreateIcon from './ext-create/logo.svg';
@@ -216,6 +217,16 @@ const menuItems = [
         description: 'Fetch Audio and Audio Information from Newgrounds. Works best with Tune Shark',
         featured: true
     },
+    
+    {
+        name: 'Prompts',
+        extensionId: 'https://snail-ide.js.org/Prompts.js',
+        iconURL: 'https://snail-ide.js.org/Prompts.png',
+        collaborator: 'LoganCreatez',
+        tags: ['penguinmod'],
+        description: 'Good prompts for penguingpt ',
+        featured: true
+    },
     {
         name: 'SnailShare API',
         extensionId: 'https://snail-ide.js.org/api.js',
@@ -376,8 +387,8 @@ const menuItems = [
     },
     {
         name: 'Rounding+',
-        extensionId: 'https://snail-ide.js.org/rounding.js',
-        iconURL: 'https://uploads.scratch.mit.edu/get_image/project/957486168_144x108.png',
+        extensionId: 'https://snail-ide-extensions-gallery.vercel.app/extensions/CharCoalAfterLife/rounding.js',
+        iconURL: 'https://snail-ide-extensions-gallery.vercel.app/images/CharCoalAfterLife/rounding.png',
         tags: ['penguinmod', 'categoryexpansion'],
         description: "Expansion of the rounding block.",
         collaborator: 'CharcoalAfterlife',
@@ -386,7 +397,7 @@ const menuItems = [
     {
         name: 'Perlin Noise',
         extensionId: 'iygPerlin',
-        iconURL: 'https://studio.penguinmod.site/static/assets/39f37f1b00fbf96926276701d8de4c89.png',
+        iconURL: 'https://studio.penguinmod.com/static/assets/39f37f1b00fbf96926276701d8de4c89.png',
         tags: ['penguinmod'],
         description: "Blocks for generating and using Perlin noise. Good for generating terrain, clouds, and other things.",
         featured: true
@@ -402,11 +413,21 @@ const menuItems = [
     },
     {
         name: 'Grayscale',
-        extensionId: 'https://penguin-mod-extensions-gallery.vercel.app/extensions/Mr_rudy/grayscale.js',
+        extensionId: 'https://snail-ide.js.org/grayscale.js',
         collaborator: 'Mr_rudy',
-        iconURL: 'https://penguin-mod-extensions-gallery.vercel.app/images/Mr_rudy/grayscale.svg',
+        iconURL: 'https://snail-ide.js.org/grayscale.svg',
         tags: ['penguinmod'],
         description: "Toggle a dramatic grayscale effect on your project. ",
+        featured: true
+    },
+    {
+        name: 'Roku',
+        extensionId: 'roku',
+        internetConnectionRequired: true,
+        collaborator: 'gvbvdxx',
+        iconURL: roku,
+        tags: ['other_mods'],
+        description: 'Interact with your Roku tv via the GM2Helper software!',
         featured: true
     },
     {
@@ -824,8 +845,8 @@ const menuItems = [
     },
     {
         name: 'Better Storage',
-        extensionId: 'https://extensions.penguinmod.site/extensions/Gen1x/better_storage.js',
-        iconURL: 'https://extensions.penguinmod.site/images/Gen1x/betterstorage.png',
+        extensionId: 'https://extensions.penguinmod.com/extensions/Gen1x/better_storage.js',
+        iconURL: 'https://extensions.penguinmod.com/images/Gen1x/betterstorage.png',
         tags: ['penguinmod'],
         description: 'Like PenguinMods Storage Extension, but with a couple more features, and faster servers.',
         collaborator: 'G1nX',
@@ -849,6 +870,17 @@ const menuItems = [
         description: 'Blocks to communicate with APIs and websites.',
         featured: true,
         internetConnectionRequired: true
+    },
+    {
+        name: 'CloudLink Ω',
+        extensionId: 'https://raw.githubusercontent.com/MikeDev101/cloudlink-omega/main/client/cloudlinkomega_turbowarp.js',
+        tags: ['penguinmod', 'turbowarp'],
+        iconURL: 'https://snail-ide.js.org/omega.png',
+        description: 'Use the power of P2P to create better and faster cloud based projects. You can even easily add voice chat.',
+        featured: true,
+        disabled: true,
+        extDeveloper: 'MikeDev',
+        internetConnectionRequired: false
     },
     {
         name: 'CloudLink',
@@ -1016,7 +1048,7 @@ const menuItems = [
     {
         name: 'Camera Controls',
         extensionId: 'pmCamera',
-        iconURL: 'https://studio.penguinmod.site/static/assets/6b8350e1c4fcb14dddb1c4bac60690fc.png',
+        iconURL: 'https://studio.penguinmod.com/static/assets/6b8350e1c4fcb14dddb1c4bac60690fc.png',
         tags: ['penguinmod'],
         description: (
             <FormattedMessage
@@ -1150,9 +1182,9 @@ const menuItems = [
                 id="pm.extraLibraryExtensions.name"
             />
         ),
-        href: 'https://extensions.penguinmod.site/',
+        href: 'https://extensions.penguinmod.com/',
         extensionId: 'special_penguinmodExtensionLibrary',
-        iconURL: 'https://studio.penguinmod.site/static/assets/7a4510ab192e5a0bd0b1186db1396bce.svg',
+        iconURL: 'https://studio.penguinmod.com/static/assets/7a4510ab192e5a0bd0b1186db1396bce.svg',
         description: (
             <FormattedMessage
                 defaultMessage="See some user-submitted extensions. Opens in a new tab."
@@ -1173,7 +1205,7 @@ const menuItems = [
         ),
         href: 'https://extensions.turbowarp.org/',
         extensionId: 'special_turbowarpExtensionLibrary',
-        iconURL: 'https://studio.penguinmod.site/static/assets/fa121178a0dc748c56257f39987f0540.svg',
+        iconURL: 'https://studio.penguinmod.com/static/assets/fa121178a0dc748c56257f39987f0540.svg',
         description: (
             <FormattedMessage
                 // eslint-disable-next-line max-len
@@ -1238,8 +1270,8 @@ const menuItems = [
     },
     {
         name: 'Better Input',
-        extensionId: 'https://extensions.penguinmod.site/extensions/SharkPool/BetterInput.js',
-        iconURL: 'https://extensions.penguinmod.site/images/SharkPool/BetterInput.svg',
+        extensionId: 'https://extensions.penguinmod.com/extensions/SharkPool/BetterInput.js',
+        iconURL: 'https://extensions.penguinmod.com/images/SharkPool/BetterInput.svg',
         tags: ['penguinmod'],
         collaborator: 'SharkPool-SP',
         description: 'Expansion to the Ask and Wait blocks.',

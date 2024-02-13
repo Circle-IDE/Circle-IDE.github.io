@@ -61,7 +61,7 @@
       async usergrab(args) {
         try {
           const response = await Scratch.fetch(
-            "https://snailshare-backend.glitch.me/api/users/getFollowerCount?username=" + encodeURIComponent(args.WHO)
+            "https://snailshare.xyz/api/users/getFollowerCount?username=" + encodeURIComponent(args.WHO)
           );
           return response.text(); //pretty straightforward isnt it
         } catch (error) {
@@ -71,7 +71,7 @@
       async idtoname(args) {
         try {
           const response = await Scratch.fetch(
-            "https://snailshare-backend.glitch.me/api/pmWrapper/getProject?id=" + args.WHO
+            "https://snailshare.xyz/api/pmWrapper/getProject?id=" + args.WHO
           );
           const jsonData = await response.json();
           return jsonData.name;
@@ -82,7 +82,7 @@
       async idtoowner(args) {
         try {
           const response = await Scratch.fetch(
-            "https://snailshare-backend.glitch.me/api/pmWrapper/getProject?id=" + args.WHO
+            "https://snailshare.xyz/api/pmWrapper/getProject?id=" + args.WHO
           );
           const jsonData = await response.json();
           return jsonData.author.username;

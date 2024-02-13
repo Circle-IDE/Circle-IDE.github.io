@@ -28,7 +28,7 @@ const getProjectUri = () => new Promise(resolve => {
 const isUploadAvailable = async () => {
     let res = null;
     try {
-        res = await fetch('https://snailshare-backend.glitch.me/api');
+        res = await fetch('https://snailshare.xyz/api');
     } catch {
         // failed to fetch entirely
         return false;
@@ -138,7 +138,7 @@ class ShareButton extends React.Component {
             }
 
             const url = location.origin;
-            window.open(`https://snail-ide.vercel.app/upload?name=${this.props.projectTitle}${remixPiece}&external=${url}`, '_blank');
+            window.open(`https://snail-ide.com/upload?name=${this.props.projectTitle}${remixPiece}&external=${url}`, '_blank');
         });
     }
     render() {
